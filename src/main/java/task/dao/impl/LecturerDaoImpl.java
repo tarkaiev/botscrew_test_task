@@ -40,7 +40,12 @@ public class LecturerDaoImpl implements LecturerDao {
 
     @Override
     public List<Lecturer> getByTemplate(String template) {
-        return null;
+        try (Session session = sessionFactory.openSession()) {
+            Query<Lecturer> query = session.createQuery("from Lecturer "
+                    + "where name like :template", Lecturer.class);
+            query.setParameter("template", "%" + template + "%");
+            return query.getResultList();
+        }
     }
 
     @Override
