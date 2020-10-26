@@ -9,9 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import task.model.Degree;
-import task.model.Department;
-import task.model.Lecturer;
 
 @Configuration
 @PropertySource("classpath:db.properties")
@@ -46,9 +43,7 @@ public class AppConfig {
         props.put("hibernate.hbm2ddl.auto", env.getProperty("hibernate.hbm2ddl.auto"));
 
         sessionFactoryBean.setHibernateProperties(props);
-        sessionFactoryBean.setAnnotatedClasses(Lecturer.class);
-        sessionFactoryBean.setAnnotatedClasses(Department.class);
-        sessionFactoryBean.setAnnotatedClasses(Degree.class);
+        sessionFactoryBean.setPackagesToScan("task.model");
         return sessionFactoryBean;
     }
 }
