@@ -20,11 +20,6 @@ public class LecturerServiceImpl implements LecturerService {
     }
 
     @Override
-    public void remove(Lecturer lecturer) {
-        lecturerDao.remove(lecturer);
-    }
-
-    @Override
     public List<Lecturer> getByTemplate(String template) {
         return lecturerDao.getByTemplate(template);
     }

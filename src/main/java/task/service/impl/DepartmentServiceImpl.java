@@ -23,11 +23,6 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public void remove(Department department) {
-        departmentDao.remove(department);
-    }
-
-    @Override
     public Lecturer getDepartmentHead(String departmentName) {
         return departmentDao.getDepartmentHead(departmentName);
     }

@@ -10,8 +10,6 @@ public interface DepartmentService {
 
     void add(Department department);
 
-    void remove(Department department);
-
     Lecturer getDepartmentHead(String departmentName);
 
     Map<Degree, Integer> getDepartmentStatistics(String departmentName);

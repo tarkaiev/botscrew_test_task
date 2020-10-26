@@ -7,7 +7,5 @@ public interface DegreeService {
 
     void add(Degree degree);
 
-    void remove(Degree degree);
-
     List<Degree> getAll();
 }

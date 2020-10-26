@@ -21,11 +21,6 @@ public class DegreeServiceImpl implements DegreeService {
     }
 
     @Override
-    public void remove(Degree degree) {
-        degreeDao.remove(degree);
-    }
-
-    @Override
     public List<Degree> getAll() {
         return degreeDao.getAll();
     }
