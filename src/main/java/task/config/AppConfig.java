@@ -14,7 +14,8 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 @PropertySource("classpath:db.properties")
 @ComponentScan(basePackages = {
         "task.dao",
-        "task.service"
+        "task.service",
+        "task.util"
 })
 public class AppConfig {
     private final Environment env;
