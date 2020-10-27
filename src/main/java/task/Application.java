@@ -22,14 +22,14 @@ public class Application {
         departmentService.add(department2);
 
         Lecturer lecturer1 = new Lecturer();
-        //lecturer1.setDepartments(List.of(department1));
+        lecturer1.setDepartments(List.of(department1));
         lecturer1.setDegree("prof");
         lecturer1.setName("LECTURER1");
         lecturer1.setSalary(2000L);
         LecturerService lecturerService = context.getBean(LecturerService.class);
         lecturerService.add(lecturer1);
         Lecturer lecturer2 = new Lecturer();
-        //lecturer2.setDepartments(List.of(department2));
+        lecturer2.setDepartments(List.of(department2));
         lecturer2.setDegree("aspirant");
         lecturer2.setName("LECTURER2");
         lecturer2.setSalary(4000L);

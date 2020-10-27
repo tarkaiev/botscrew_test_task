@@ -1,14 +1,15 @@
 package task.model;
 
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -21,6 +22,6 @@ public class Lecturer {
     private String name;
     private Long salary;
     private String degree;
-    //@OneToMany
-   // private List<Department> departments;
+    @ManyToMany
+    private List<Department> departments;
 }
