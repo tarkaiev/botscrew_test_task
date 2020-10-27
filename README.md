@@ -14,7 +14,9 @@ Java, Spring, Hibernate, MySql, lombok, checkstyle plugin<br>
   + user: *"root"*<br>
   + password: *"root"*<br>
   + url: jdbc:mysql://localhost:3306/botscrew_test?serverTimezone=UTC<br>
-+ Create schema botscrew_test (You can use script in init_db.sql file in resources<br>
++ Create schema botscrew_test (You can use script in init_db.sql file in resources)<br>
+
+ + Run Application class
 
 # Author
 [Denys Tarkaiev](https://github.com/tarkaiev "Author")
