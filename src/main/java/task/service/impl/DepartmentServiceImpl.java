@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
 import task.dao.DepartmentDao;
-import task.model.Degree;
 import task.model.Department;
 import task.model.Lecturer;
 import task.service.DepartmentService;
@@ -23,12 +22,17 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
+    public void setDepartmentHead(Department department, Lecturer lecturer) {
+        departmentDao.setDepartmentHead(department, lecturer);
+    }
+
+    @Override
     public Lecturer getDepartmentHead(String departmentName) {
         return departmentDao.getDepartmentHead(departmentName);
     }
 
     @Override
-    public Map<Degree, Integer> getDepartmentStatistics(String departmentName) {
+    public Map<String, Integer> getDepartmentStatistics(String departmentName) {
         return departmentDao.getDepartmentStatistics(departmentName);
     }
 
