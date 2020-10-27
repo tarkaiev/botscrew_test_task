@@ -1,0 +1,1 @@
+CREATE SCHEMA `botscrew_test` DEFAULT CHARACTER SET utf8 ;
