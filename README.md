@@ -4,7 +4,7 @@ This is a simple console app for a couple of read operations
 App uses N-tier architecture with DB layer, DAO layer, and Service layer<br>
 
 # Technologies used<br>
-Java, Spring, Hibernate, MySql, lombok, checkstyle plugin<br>
+Java, Spring, Hibernate, MySql, lombok, checkstyle plugin, Travis Ci<br>
 
 
 # To run this project you need:<br>
