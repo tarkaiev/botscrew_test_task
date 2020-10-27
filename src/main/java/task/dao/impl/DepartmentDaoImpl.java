@@ -1,7 +1,6 @@
 package task.dao.impl;
 
 import java.util.List;
-import java.util.Map;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -65,22 +64,43 @@ public class DepartmentDaoImpl implements DepartmentDao {
     @Override
     public Lecturer getDepartmentHead(String departmentName) {
         try (Session session = sessionFactory.openSession()) {
-            Query<Lecturer> query = session.createQuery("from Lecturer l join Department d " +
-                    " where d.name = :name", Lecturer.class);
+            Query<Lecturer> query = session.createQuery("from Lecturer l "
+                    + "join fetch l.departments dept "
+                    + "WHERE dept.name = :name and dept.headOfDept.id = l.id", Lecturer.class);
             query.setParameter("name", departmentName);
             return query.getSingleResult();
         }
     }
 
     @Override
-    public Map<String, Integer> getDepartmentStatistics(String departmentName) {
-        return null;
+    public List<Lecturer> getDepartmentStatistics(String departmentName) {
+        try (Session session = sessionFactory.openSession()) {
+            Query<Lecturer> query = session.createQuery("from Lecturer l "
+                    + "join fetch l.departments dept "
+                    + "WHERE dept.name = :name", Lecturer.class);
+            query.setParameter("name", departmentName);
+            return query.getResultList();
+        }
+    }
+
+    @Override
+    public Integer getDepartmentLecturersCount(String departmentName) {
+        try (Session session = sessionFactory.openSession()) {
+            Query<Integer> query = session.createQuery("select count(*) from Lecturer l"
+                    + " join l.departments dept"
+                    + " WHERE dept.name = :name", Integer.class);
+            query.setParameter("name", departmentName);
+            return query.getSingleResult();
+        }
     }
 
     @Override
     public Double averageSalary(String departmentName) {
         try (Session session = sessionFactory.openSession()) {
-            Query<Double> query = session.createQuery("select avg(l.salary) from Lecturer l");
+            Query<Double> query = session.createQuery("select avg(l.salary) from Lecturer l"
+                    + " join l.departments dept"
+                    + " WHERE dept.name = :name", Double.class);
+            query.setParameter("name", departmentName);
             return query.getSingleResult();
         }
     }

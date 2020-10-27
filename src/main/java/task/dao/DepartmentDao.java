@@ -1,7 +1,6 @@
 package task.dao;
 
 import java.util.List;
-import java.util.Map;
 import task.model.Department;
 import task.model.Lecturer;
 
@@ -13,9 +12,11 @@ public interface DepartmentDao {
 
     Lecturer getDepartmentHead(String departmentName);
 
-    Map<String, Integer> getDepartmentStatistics(String departmentName);
+    List<Lecturer> getDepartmentStatistics(String departmentName);
 
     Double averageSalary(String departmentName);
+
+    Integer getDepartmentLecturersCount(String departmentName);
 
     List<Department> getAll();
 }

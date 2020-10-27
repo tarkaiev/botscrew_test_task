@@ -1,5 +1,6 @@
 package task.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
@@ -33,7 +34,17 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Map<String, Integer> getDepartmentStatistics(String departmentName) {
-        return departmentDao.getDepartmentStatistics(departmentName);
+        List<Lecturer> lecturerList = departmentDao.getDepartmentStatistics(departmentName);
+        Map<String, Integer> departmentStats = new HashMap<>();
+        for (Lecturer lecturer : lecturerList) {
+            departmentStats.merge(lecturer.getDegree(), 1, Integer::sum);
+        }
+        return departmentStats;
+    }
+
+    @Override
+    public Integer getDepartmentLecturersCount(String departmentName) {
+        return departmentDao.getDepartmentLecturersCount(departmentName);
     }
 
     @Override

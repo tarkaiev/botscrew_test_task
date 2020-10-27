@@ -39,6 +39,8 @@ public class Application {
         departmentService.setDepartmentHead(department2, lecturer2);
 
         System.out.println(departmentService.getDepartmentHead("DEPARTMENT1"));
+        System.out.println(departmentService.getDepartmentStatistics("DEPARTMENT1"));
+        System.out.println(departmentService.averageSalary("DEPARTMENT1"));
 
     }
 }
