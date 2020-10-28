@@ -84,11 +84,11 @@ public class DepartmentDaoImpl implements DepartmentDao {
     }
 
     @Override
-    public Integer getDepartmentLecturersCount(String departmentName) {
+    public Long getDepartmentLecturersCount(String departmentName) {
         try (Session session = sessionFactory.openSession()) {
-            Query<Integer> query = session.createQuery("select count(*) from Lecturer l"
+            Query<Long> query = session.createQuery("select count(*) from Lecturer l"
                     + " join l.departments dept"
-                    + " WHERE dept.name = :name", Integer.class);
+                    + " WHERE dept.name = :name", Long.class);
             query.setParameter("name", departmentName);
             return query.getSingleResult();
         }

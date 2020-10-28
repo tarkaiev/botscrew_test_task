@@ -2,6 +2,8 @@ package task;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import task.config.AppConfig;
 import task.model.Department;
@@ -28,7 +30,8 @@ public class Application {
         System.out.println(intro);
         Scanner scanner = new Scanner(System.in);
         DepartmentService departmentService = context.getBean(DepartmentService.class);
-        List<Department> deptList = departmentService.getAll();
+        List<String> deptList = departmentService.getAll().stream()
+                .map(Department::getName).collect(Collectors.toList());
         label:
         while (true) {
             String input = scanner.nextLine();
@@ -84,7 +87,7 @@ public class Application {
                             + "you want to get number of lecturers:");
                     String input2 = scanner.nextLine();
                     try {
-                        Integer count = departmentService.getDepartmentLecturersCount(input2);
+                        Long count = departmentService.getDepartmentLecturersCount(input2);
                         System.out.println("Number of lecturers for " + input2 + " is " + count);
                     } catch (Exception e) {
                         System.out.println("No such department exists");

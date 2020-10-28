@@ -16,7 +16,7 @@ public interface DepartmentDao {
 
     Double averageSalary(String departmentName);
 
-    Integer getDepartmentLecturersCount(String departmentName);
+    Long getDepartmentLecturersCount(String departmentName);
 
     List<Department> getAll();
 }
