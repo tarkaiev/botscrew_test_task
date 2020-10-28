@@ -3,7 +3,6 @@ package task;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import task.config.AppConfig;
 import task.model.Department;
